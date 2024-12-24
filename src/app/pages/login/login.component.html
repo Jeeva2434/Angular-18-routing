@@ -1,0 +1,33 @@
+
+<div class="form-wrapper">
+    <div class="form-container col-12 col-sm-8 col-mg-6 col-lg-4 p-3 p-md-0">
+
+        <h3>Sign in :</h3>
+    
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+        
+            <div class="col-12 mt-2 mb-3 position-relative">
+                <label class="my-2" for="name">Enter your name:</label>
+                <input id="name"  class="form-control mt-3 my-2"  type="text" autocomplete="off" formControlName="name"/>
+                <span class="error" *ngIf="this.loginForm.get('name')?.touched && this.loginForm.get('name')?.invalid">
+                    Name is required
+                </span>
+            </div>
+        
+            <div class="col-12 mt-2 mb-3 position-relative" >
+                <label for="role" class="my-2">Select your role:</label>
+                <select id="role"  class="form-select mt-3 my-2" formControlName="userRole">
+                    <option value="Admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <span class="error" *ngIf="this.loginForm.get('userRole')?.touched && this.loginForm.get('userRole')?.invalid">
+                    Role is required
+                </span>
+            </div>
+        
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="loginForm.invalid">Sign in</button>
+        
+        </form>
+    </div>
+</div>
+
